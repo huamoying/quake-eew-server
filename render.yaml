@@ -1,0 +1,22 @@
+# Render 部署蓝图（Render 会自动识别本文件）。
+# 密钥类变量用 sync:false，表示在 Render 网页“Environment”里手动填写，不写进仓库。
+services:
+  - type: web
+    name: quake-eew-server
+    runtime: node
+    plan: free
+    region: singapore
+    buildCommand: npm install
+    startCommand: npm start
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      - key: TENCENT_MAP_KEY
+        sync: false
+      - key: JPUSH_APPKEY
+        sync: false
+      - key: JPUSH_MASTER_SECRET
+        sync: false
+      - key: JPUSH_API_BASE
+        value: https://api.jiguang.cn
